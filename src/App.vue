@@ -1,7 +1,15 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+          <img src="./assets/logo.png">
+          <router-view/>
+        </div>
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,6 +21,7 @@ export default {
 
 <style>
 #app {
+  @import url('./../node_modules/bootstrap/dist/css/bootstrap.min.css');
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
