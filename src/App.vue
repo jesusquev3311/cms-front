@@ -2,7 +2,9 @@
   <div id="app">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+          <dashboard/>
+        </div>
         <div class="col-sm-10">
           <img src="./assets/logo.png">
           <router-view/>
@@ -14,8 +16,10 @@
 </template>
 
 <script>
+import Dashboard from "./components/dashboard/dashboard";
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Dashboard}
 }
 </script>
 
