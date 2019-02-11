@@ -1,10 +1,35 @@
 <template>
     <div>
-      <ul>
-        <li v-for="lead in leads">
-          <span>{{lead._id}}</span>
-        </li>
-      </ul>
+      <div v-if="leads.length > 1">
+            <div class="leads-table">
+                <!--table headers-->
+                <div class="leads-table-header">
+                    <div class="row">
+                        <div class="col-sm-2">Name:</div>
+                        <div class="col-sm-2">Email:</div>
+                        <div class="col-sm-2">Phone:</div>
+                        <div class="col-sm-2">Broker:</div>
+                        <div class="col-sm-2">Address:</div>
+                        <div class="col-sm-2">City:</div>
+
+                    </div>
+                </div>
+                <div class="leads-table-body">
+                    <div v-for="lead in leads" class="row">
+                        <div class="col-sm-2">{{lead.name}}</div>
+                        <div class="col-sm-2">{{lead.email}}</div>
+                        <div class="col-sm-2">{{lead.phone}}</div>
+                        <div class="col-sm-2">{{lead.broker}}</div>
+                        <div class="col-sm-2">{{lead.address}}</div>
+                        <div class="col-sm-2">{{lead.city}}</div>
+
+                    </div>
+                </div>
+
+            </div>
+      </div>
+        <h3 v-else>NO LEADS</h3>
+
     </div>
 </template>
 
