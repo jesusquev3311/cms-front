@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div v-if="leads.length > 1">
+      <div v-if="leads.length > 0">
             <div class="leads-table">
                 <!--table headers-->
                 <div class="leads-table-header">
@@ -39,7 +39,11 @@
       name: "leads",
       data(){
         return{
-          leads: []
+          leads: [],
+          lead:{
+            name:'',
+            email:''
+          }
         }
       },
       mounted(){
@@ -48,7 +52,7 @@
       methods:{
         async getLeads (){
           LeadsService.Leads().getAll().then((response)=>{
-            this.leads = response.data
+            this.leads = response.data.leads
           })
             .catch((err)=> console.log(err))
         }
