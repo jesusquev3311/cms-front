@@ -6,7 +6,6 @@
           <dashboard/>
         </div>
         <div class="col-sm-10">
-          <img src="./assets/logo.png">
           <router-view/>
         </div>
 
@@ -23,14 +22,30 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
 #app {
   @import url('./../node_modules/bootstrap/dist/css/bootstrap.min.css');
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height: 900px;
+  background-color: #f5f4fc;
+
+  /*
+  Defaults
+   */
+    .main-title{
+      font-size: 32px;
+      font-weight: 600;
+      margin: 30px 0;
+      margin-bottom: 60px;
+      text-align: left;
+    }
+
+    .cms-sections{
+      padding: 60px 20px;
+    }
 }
 </style>

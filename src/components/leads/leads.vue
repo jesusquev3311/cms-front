@@ -1,16 +1,17 @@
 <template>
-    <div>
+    <section id="leads-list" class="cms-sections">
+        <h3 class="main-title">My Leads</h3>
       <div v-if="leads.length > 0">
             <div class="leads-table">
                 <!--table headers-->
                 <div class="leads-table-header">
                     <div class="row">
-                        <div class="col-sm-2">Name:</div>
-                        <div class="col-sm-2">Email:</div>
-                        <div class="col-sm-2">Phone:</div>
-                        <div class="col-sm-2">Broker:</div>
-                        <div class="col-sm-2">Address:</div>
-                        <div class="col-sm-2">City:</div>
+                        <div class="col-sm-2"><span>Name</span></div>
+                        <div class="col-sm-2"><span>Email</span></div>
+                        <div class="col-sm-2"><span>Phone</span></div>
+                        <div class="col-sm-2"><span>Broker</span></div>
+                        <div class="col-sm-2"><span>Address</span></div>
+                        <div class="col-sm-2"><span>City</span></div>
 
                     </div>
                 </div>
@@ -30,7 +31,7 @@
       </div>
         <h3 v-else>NO LEADS</h3>
 
-    </div>
+    </section>
 </template>
 
 <script>
@@ -61,5 +62,24 @@
 </script>
 
 <style lang="scss">
-
+    #leads-list{
+        .leads-table{
+            border: 1px solid #ededed;
+            .leads-table-header {
+                background-color: #fff;
+                padding: 20px 30px;
+                span{
+                    font-weight: 600;
+                    font-size: 18px;
+                }
+            }
+            .leads-table-body{
+                .row{
+                    padding: 10px 15px;
+                    background-color: #f8fafb;
+                    margin: 0;
+                }
+            }
+        }
+    }
 </style>
