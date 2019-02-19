@@ -32,7 +32,10 @@ export default {
   color: #2c3e50;
   min-height: 900px;
   background-color: #f5f4fc;
-
+  display: flex;
+.row{
+  height: 100%;
+}
   /*
   Defaults
    */
