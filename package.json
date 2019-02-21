@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start": "npm run dev --open",
     "build": "node build/build.js"
   },
   "dependencies": {
@@ -15,6 +15,7 @@
     "jquery": "^3.3.1",
     "popper.js": "^1.14.7",
     "vue": "^2.5.2",
+    "vue-cookies": "^1.5.12",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

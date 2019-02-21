@@ -45,9 +45,15 @@
                 })
                 .then((response) => {
                     console.log('User Logged successfully', response);
+                    if ( response.data.success == true){
+                        console.log('pass this ');
+                        this.$router.push({name: 'Login'})
+                    } else {
+                        console.log('there was an error');
+                    }
                 }). catch((err)=> console.log(err));
 
-                this.$router.push({name: 'Login'})
+
             }
         }
     }
