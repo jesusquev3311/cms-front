@@ -28,6 +28,7 @@
 
     export default {
         name: "login",
+        props:['authenticated'],
         data() {
             return {
                 user: {
@@ -46,10 +47,12 @@
                 .then((response) => {
                     console.log('User Logged successfully', response);
                     if ( response.data.success == true){
-                        console.log('pass this ');
-                        this.$router.push({name: 'Login'})
+                        this.$emit('update:authenticated.value',true);
+                        console.log('passed this: ', this.authenticated);
+                        this.$router.push({name: 'Welcome'})
                     } else {
                         console.log('there was an error');
+                        this.$router.push({name: 'Login'})
                     }
                 }). catch((err)=> console.log(err));
 
