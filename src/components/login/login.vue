@@ -47,8 +47,6 @@
                 .then((response) => {
                     console.log('User Logged successfully', response);
                     if ( response.data.success == true){
-                        this.$emit('update:authenticated.value',true);
-                        console.log('passed this: ', this.authenticated);
                         this.$router.push({name: 'Welcome'})
                     } else {
                         console.log('there was an error');

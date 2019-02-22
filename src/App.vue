@@ -3,10 +3,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2">
-          <dashboard :authenticated.sync="this.authenticated.value"/>
+          <dashboard/>
         </div>
         <div class="col-sm-10">
-          <router-view :authenticated.sync="this.authenticated.value" @update="setStatus"/>
+            <router-view />
         </div>
 
       </div>
@@ -16,25 +16,29 @@
 
 <script>
 import Dashboard from "./components/dashboard/dashboard";
+import Login from "./components/login/login";
 export default {
   name: 'App',
-  components: {Dashboard},
+  components: {Login, Dashboard},
+  props:{
+
+  },
   data(){
     return{
       authenticated: {
         type: Boolean,
-        value:false
+        default:false
       }
     }
   },
   methods:{
     setStatus(status){
       console.log('here');
-      this.authenticated.value = status;
+      this.authenticated = status;
     }
   },
   mounted() {
-     if (!this.authenticated.value) this.$router.replace({name:"Login"});
+     // if (!this.authenticated.value) this.$router.replace({name:"Login"});
   }
 }
 </script>
