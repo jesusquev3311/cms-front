@@ -1,12 +1,12 @@
 <template>
-  <div id="dashboard">
-    <div class="dashboard-header">
+  <div id="sidebar">
+    <div class="sidebar-header">
       <div class="user-info">
         <div class="img-wrapper">
           <img src="../../assets/img/profile.jpg" alt="Porfile" height="100px" width="100px">
         </div>
       </div>
-      <div class="dashboard-menu">
+      <div class="sidebar-menu">
         <ul>
           <li class="menu-item">
             <router-link tag="a" to="/welcome">Home</router-link>
@@ -38,7 +38,7 @@
 
 <script>
   export default {
-    name: "dashboard",
+    name: "sidebar",
     data() {
       return {}
     }
@@ -46,16 +46,16 @@
 </script>
 
 <style lang="scss">
-  #dashboard {
+  #sidebar {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #d9d9f5;
+    background-color: #a89aff94;
     padding: 40px;
 
-    .dashboard-header {
+    .sidebar-header {
       .img-wrapper {
         img {
           border-radius: 100%;

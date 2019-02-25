@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2">
-          <dashboard/>
+          <sidebar/>
         </div>
         <div class="col-sm-10">
             <router-view />
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import Dashboard from "./components/dashboard/dashboard";
+import sidebar from "./components/sidebar/sidebar";
 import Login from "./components/login/login";
 export default {
   name: 'App',
-  components: {Login, Dashboard},
+  components: {Login, sidebar},
   props:{
 
   },
@@ -46,7 +46,10 @@ export default {
 <style lang="scss">
 
 #app {
+  //Bootstrap library
   @import url('./../node_modules/bootstrap/dist/css/bootstrap.min.css');
+  //Font Awesome Icons
+  @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,6 +63,9 @@ export default {
   /*
   Defaults
    */
+  a{
+    text-decoration: none;
+  }
     .main-title{
       font-size: 32px;
       font-weight: 600;
@@ -71,5 +77,55 @@ export default {
     .cms-sections{
       padding: 60px 20px;
     }
+
+    /*Buttons*/
+  .cms-btn{
+    border: 1px solid #ececec;
+    padding: 10px 0px;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 12px;
+    transition: all .5s;
+  }
+  /*Add new btn */
+  .cms-add-btn{
+    font-size: 23px;
+    float: right;
+    color: #a89aff;
+  }
+  /*Edit Button*/
+  .cms-edit-btn{
+    border-color: #70bbf5;
+    color: #70bbf5;
+    &:hover{
+      background-color: #70bbf5;
+      color:#fff !important;
+    }
+  }
+  /*Delete Button*/
+  .cms-remove-btn{
+    border-color: #ff2b85;
+    color: #ff2b85;
+    &:hover{
+      background-color: #ff2b85;
+      border-color: #ff2b85;
+      color:#fff;
+    }
+  }
+
+  /*CMS Form*/
+  .cms-form{
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+
+    padding: 30px;
+    .form-control{
+      border-radius: 0;
+      border: none;
+      border-bottom: 1px solid #ededed;
+    }
+  }
 }
 </style>

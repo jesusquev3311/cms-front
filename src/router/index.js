@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import leads from '@/components/leads/leads'
 import login from '@/components/login/login'
 import Welcome from '@/components/HelloWorld'
+import AddLead from '@/components/leads/addLead'
+
 
 Vue.use(Router)
 
@@ -11,9 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect:{
-        name:'Login'
-      }
+      name: 'welcome',
+      component:Welcome
     },
     {
       path: '/login',
@@ -27,9 +28,9 @@ export default new Router({
       component: leads
     },
     {
-      path: '/welcome',
-      name: 'Welcome',
-      component: Welcome
+      path: '/leads/add-lead',
+      name: 'add-lead',
+      component:AddLead
     }
   ]
 })
