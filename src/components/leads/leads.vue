@@ -113,8 +113,8 @@
                   </div>
 
                   <div class="col-sm-12">
-                    <b>Address:</b>
-                    {{lead.address}}
+                    <b>Address:</b><br>
+                    {{(lead.address).slice(0,150) + "..."}}
                   </div>
 
                 </div>
@@ -123,6 +123,7 @@
               <div class="footer">
                 <div class="row">
                   <div class="col-sm-6">
+                    <router-linl to="/leads/{{lead._id}}"></router-linl>
                     <button type="button" class="btn cms-btn cms-edit-btn"><i class="far fa-edit"></i> edit</button>
                   </div>
                   <div class="col-sm-6">

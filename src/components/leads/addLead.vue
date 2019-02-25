@@ -50,7 +50,7 @@
             <label>Product</label>
             <select id="lead-product" name="lead-product" v-model="lead.products.name" class="form-control">
               <option value="">Select Product</option>
-              <option value="Product fake2">Product Fake</option>
+              <option value="Product Fakes12">Product Fake</option>
             </select>
           </div>
         </div>
@@ -84,6 +84,14 @@
           <div class="form-group">
             <label>Country</label>
             <input type="text" id="lead-country" name="lead-country" v-model="lead.country" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Address</label>
+            <textarea class="form-control" id="lead-address" name="lead-address" v-model="lead.address"></textarea>
           </div>
         </div>
       </div>
