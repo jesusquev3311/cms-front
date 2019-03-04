@@ -123,12 +123,10 @@
               <div class="footer">
                 <div class="row">
                   <div class="col-sm-6">
-                    <router-linl to="/leads/{{lead._id}}"></router-linl>
-                    <button type="button" class="btn cms-btn cms-edit-btn"><i class="far fa-edit"></i> edit</button>
+                    <router-link tag="button" class="btn cms-btn cms-edit-btn" :to="'/leads/'+lead._id"><i class="far fa-edit"></i> edit</router-link>
                   </div>
                   <div class="col-sm-6">
-                    <button @click="deleteLead(lead._id)" type="button" class="btn cms-btn cms-remove-btn"><i class="far fa-trash-alt"></i> delete
-                    </button>
+                    <button @click="deleteLead(lead._id)" type="button" class="btn cms-btn cms-remove-btn"><i class="far fa-trash-alt"></i> delete</button>
                   </div>
                 </div>
               </div>
