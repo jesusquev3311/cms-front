@@ -2,12 +2,26 @@
     <section id="lead-detail" class="cms-sections">
         <div class="row">
             <div class="col-sm-11 wrapper">
-                <h3 class="main-title">{{this.lead.name}}
+                <h3 class="main-title">
                     <router-link to="/leads/" tag="a" class="cms-add-btn"><i class="far fa-plus-square"></i> Leads
                     </router-link>
                 </h3>
                 <div class="status">
-                    <h4 class="status-title">Status: <span>{{this.lead.status}}</span></h4>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="contact-info">
+                                <div class="detail-img">
+                                    <img :src="'http://i.pravatar.cc/300?img='+ Math.floor(Math.random() * 71)" alt="Profile Img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="contact-info">
+                                <h3 class="main-title">{{this.lead.name}}</h3>
+                                <h4 class="status-title">Status: <span>{{this.lead.status}}</span></h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="detail-info">
@@ -109,18 +123,31 @@
             margin: 0 auto;
 
             .status {
-                background-color: #FFF;
-                padding: 20px;
-                border-radius: 5px;
                 display: block;
                 margin-bottom: 30px;
-
+                .row{
+                    align-items: center;
+                }
                 .status-title {
                     span {
                         float: right;
                     }
                 }
+                .contact-info {
+                    background-color: #FFF;
+                    padding: 20px;
+                    border-radius: 5px;
+                    display: block;
+                    height: 100%;
+                    .detail-img{
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+
             }
+
             .detail-info{
                 .row{
                     display: flex;

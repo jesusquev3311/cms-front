@@ -15,7 +15,7 @@
                   <!-- Lead Picture-->
                   <div class="col-sm-4">
                     <div class="img-wrapper">
-                      <img src="../../assets/img/profile.jpg" alt="Profile image" style="max-width: 100px">
+                      <img :src="'http://i.pravatar.cc/150?img='+ Math.floor(Math.random() * 71)" alt="Profile image" style="max-width: 100px">
                     </div>
                   </div>
                   <!-- Lead name -->
@@ -148,6 +148,7 @@
     name: "leads",
     data() {
       return {
+        number:'',
         leads: [],
         lead: {
           name: '',
@@ -207,7 +208,11 @@
       border-radius: 5px;
       margin-bottom: 30px;
       box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
-
+      .img-wrapper{
+        img{
+          border-radius: 3px;
+        }
+      }
       .lead-name {
         font-size: 23px;
         color: #333;
