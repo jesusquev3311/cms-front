@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-11 wrapper">
                 <h3 class="main-title">
-                    <router-link to="/leads/" tag="a" class="cms-add-btn"><i class="far fa-plus-square"></i> Leads
+                    <router-link to="/leads/" tag="a" class="cms-add-btn"><i class="fas fa-arrow-left"></i> Leads
                     </router-link>
                 </h3>
                 <div class="status">
@@ -17,8 +17,9 @@
                         </div>
                         <div class="col-sm-10">
                             <div class="contact-info">
-                                <h3 class="main-title">{{this.lead.name}}</h3>
-                                <h4 class="status-title">Status: <span>{{this.lead.status}}</span></h4>
+                                <h3 class="detail-title">{{this.lead.name}}</h3>
+                                <h4 class="main-id">ID: {{this.lead._id}}</h4>
+                                <h4 class="status-title">Status: <span class="status-mid">{{this.lead.status}}</span></h4>
                             </div>
                         </div>
                     </div>
@@ -123,6 +124,15 @@
             margin: 0 auto;
 
             .status {
+                .status-mid{
+                    color: gold;
+                }
+                .status-good{
+                    color: limegreen;
+                }
+                .status-danger{
+                    color: red;
+                }
                 display: block;
                 margin-bottom: 30px;
                 .row{
@@ -143,6 +153,13 @@
                         img{
                             width: 100%;
                         }
+                    }
+                    .detail-title{
+                        font-size: 35px;
+                        margin-bottom: 10px;
+                    }
+                    .detail-id{
+                        font-size: 15px;
                     }
                 }
 
