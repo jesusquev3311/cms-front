@@ -12,16 +12,7 @@
             <router-link tag="a" to="/welcome">Home</router-link>
           </li>
           <li class="menu-item">
-            <router-link tag="a" to="/leads">Leads</router-link>
-          </li>
-          <li class="menu-item">
-            <router-link tag="a" to="/clients">Clients</router-link>
-          </li>
-          <li class="menu-item">
-            <router-link tag="a" to="/users">Users</router-link>
-          </li>
-          <li class="menu-item">
-            <router-link tag="a" to="/sales">Sales</router-link>
+            <router-link tag="a" to="/leads">Clients</router-link>
           </li>
           <li class="menu-item">
             <router-link tag="a" to="/login">Log In</router-link>
