@@ -5,6 +5,11 @@ import App from './App'
 import router from './router'
 require('jquery')
 require('bootstrap')
+import VueNoty from 'vuejs-noty'
+
+Vue.use(VueNoty, {
+  theme    : 'sunset'
+});
 
 Vue.config.productionTip = false
 

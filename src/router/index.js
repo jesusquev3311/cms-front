@@ -5,6 +5,7 @@ import login from '@/components/login/login'
 import Welcome from '@/components/HelloWorld'
 import AddLead from '@/components/leads/addLead'
 import leadDetail from '@/components/leads/leadDetail'
+import updateLead from '@/components/leads/updateLead'
 
 
 Vue.use(Router)
@@ -42,6 +43,12 @@ export default new Router({
       path: '/leads/:id',
       name: 'lead-detail',
       component:leadDetail,
+      props: true
+    },
+    {
+      path: '/leads/:id/update-lead',
+      name: 'update-detail',
+      component:updateLead,
       props: true
     }
   ]

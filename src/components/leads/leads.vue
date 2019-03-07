@@ -52,34 +52,34 @@
                   </div>
 
                 </div>
-                <div class="row">
-                  <template v-for="product in lead.products">
-                    <div class="col-sm-6">
-                    <span v-if="product.name" class="lead-info">
-                      <b>Product:</b>
-                      {{product.name}}
-                    </span>
-                      <span v-else class="lead-info">
-                      <b>Product:</b>
-                      No Product
-                    </span>
-                    </div>
+                <!--<div class="row">-->
+                  <!--<template v-for="product in lead.products">-->
+                    <!--<div class="col-sm-6">-->
+                    <!--<span v-if="product.name" class="lead-info">-->
+                      <!--<b>Product:</b>-->
+                      <!--{{product.name}}-->
+                    <!--</span>-->
+                      <!--<span v-else class="lead-info">-->
+                      <!--<b>Product:</b>-->
+                      <!--No Product-->
+                    <!--</span>-->
+                    <!--</div>-->
 
-                    <div class="col-sm-6">
-                    <span v-if="product.price" class="lead-info">
-                      <b>Price:</b>
-                      $ {{product.price}}
-                    </span>
+                    <!--<div class="col-sm-6">-->
+                    <!--<span v-if="product.price" class="lead-info">-->
+                      <!--<b>Price:</b>-->
+                      <!--$ {{product.price}}-->
+                    <!--</span>-->
 
-                      <span v-else class="lead-info">
-                      <b>Price:</b>
-                      0
-                    </span>
-                    </div>
-                  </template>
+                      <!--<span v-else class="lead-info">-->
+                      <!--<b>Price:</b>-->
+                      <!--0-->
+                    <!--</span>-->
+                    <!--</div>-->
+                  <!--</template>-->
 
 
-                </div>
+                <!--</div>-->
                 <!-- Address Info -->
                 <div class="row">
                   <div class="col-sm-12">

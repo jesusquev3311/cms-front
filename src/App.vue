@@ -53,6 +53,10 @@ export default {
   @import url('./../node_modules/bootstrap/dist/css/bootstrap.min.css');
   //Font Awesome Icons
   @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
+  //notifications styles
+  @import url('./../node_modules/vuejs-noty/dist/vuejs-noty.css');
+
+
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -129,6 +133,10 @@ export default {
       border: none;
       border-bottom: 1px solid #ededed;
     }
+  }
+
+  .center-auto{
+    margin: 0 auto;
   }
 }
 </style>

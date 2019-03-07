@@ -6,7 +6,7 @@ export default {
       getAll: () => Api().get(url),
       getOne: (id) => Api().get(`${url}/${id}`),
       createOne: (lead) => Api().post(url, lead),
-      updateOne: (id) => Api().put(`${url}/${id}`, lead),
+      updateOne: (id, lead) => Api().put(`${url}/${id}`, lead),
       deleteOne: (id) => Api().delete(`${url}/${id}`),
       //Leads Notes Method
       getNotes: (leadId) => Api().get(`${url}/${leadId}/notes`),

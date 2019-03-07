@@ -45,12 +45,21 @@
                     password: this.user.password
                 })
                 .then((response) => {
-                    console.log('User Logged successfully', response);
                     if ( response.data.success == true){
                         this.authenticated = true;
-                        this.$router.push({name: 'leads'});
+                        this.$noty.success("Login Successfully", {
+                            killer: true,
+                            timeout: 2000,
+                            layout: 'topRight',
+                        });
+                        this.$router.push({name: 'Leads'})
+
                     } else {
-                        console.log('there was an error');
+                        this.$noty.error("Something went wrong!", {
+                            killer: true,
+                            timeout: 4000,
+                            layout: 'topRight',
+                        })
                         this.$router.push({name: 'Login'})
                     }
                 }). catch((err)=> console.log(err));

@@ -19,7 +19,11 @@
                             <div class="contact-info">
                                 <h3 class="detail-title">{{this.lead.name}}</h3>
                                 <h4 class="main-id">ID: {{this.lead._id}}</h4>
-                                <h4 class="status-title">Status: <span class="status-mid">{{this.lead.status}}</span></h4>
+                                <router-link tag="a" :id="lead._id" :to="'/leads/'+lead._id+'/update-lead'" class="update-detail">
+                                    <i class="far fa-edit"></i> Edit Profile
+                                </router-link>
+                                <h4 class="status-title">Status: <span :class="'status-'+leadStatus">{{this.lead.status}}</span>
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -79,13 +83,12 @@
                             <div class="contact-info timeline">
                                 <h4 class="info-title">Notes Timeline</h4>
                                 <ul class="timeline">
-                                   <template >
-                                        <li v-for="note in notes"  class="timeline-item">
+                                    <template>
+                                        <li v-for="note in notes" class="timeline-item">
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <div class="author">
-                                                        <i class="fas fa-arrow-right"></i>
-                                                        {{note.author}}
+                                                        <i class="fas fa-arrow-right"></i> {{note.author}}
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -99,7 +102,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                   </template>
+                                    </template>
                                 </ul>
                             </div>
                         </div>
@@ -118,11 +121,12 @@
         props: ['id'],
         data() {
             return {
+                leadStatus: 'start',
                 leads: [],
                 lead: {},
-                broker:{},
+                broker: {},
                 notes: [],
-                note:{
+                note: {
                     author: '',
                     description: '',
                     date: ''
@@ -132,12 +136,25 @@
         mounted() {
             this.getLead(this.id);
         },
-        // updated(){
-        //     this.getLead(this.id);
-        // },
-        watch:{
-            notes(){
-               return this.notes;
+        watch: {
+            notes() {
+                return this.notes;
+            },
+            'lead.status'() {
+                switch (this.lead.status) {
+                    case 'started':
+                        this.leadStatus = 'started';
+                        break;
+                    case 'contacted':
+                        this.leadStatus = 'mid';
+                        break;
+                    case 'signed':
+                        this.leadStatus = 'good';
+                        break
+                    case 'canceled':
+                        this.leadStatus = 'danger';
+                        break;
+                }
             }
         },
         methods: {
@@ -147,33 +164,31 @@
                     this.notes = response.data.lead.notes;
                 })
             },
-            createNote(){
+            createNote() {
                 event.preventDefault();
                 leadService.Leads().addNote(this.lead._id, {
                     author: this.note.author,
                     description: this.note.description
                 })
-                    .then((response)=>{
+                    .then((response) => {
                         console.log('created', response);
-                        alert('yeah');
+                        this.$noty.success("Note Added Successfully!", {
+                            killer: true,
+                            timeout: 5000,
+                            layout: 'topRight',
+                        });
                         this.getLead(this.lead._id)
                     })
                     .catch(err => console.log('error', err));
             },
-            getNotes(){
-                leadService.Leads().getNotes(this.lead._id).then((response)=>{
-                    this.notes = response.data;
-                    console.log(response)
-                })
-            },
-            formatNoteDate(date){
+            formatNoteDate(date) {
                 let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                 let newdate = new Date(date);
                 let year = newdate.getFullYear();
-                let month = newdate.getMonth('mmmm');
+                let month = newdate.getMonth();
                 let day = newdate.getDay();
                 this.note.date = `${day}/${month}/${year}`;
-                return  `${months[month]} ${day}`;
+                return `${months[month]} ${day}`;
             }
         }
     }
@@ -185,71 +200,97 @@
             margin: 0 auto;
 
             .status {
-                .status-mid{
-                    color: gold;
+                .update-detail {
+                    position: absolute;
+                    right: 20px;
+                    top: 20px;
                 }
-                .status-good{
+
+                .status-started {
+                    color: #00B7FF;
+                }
+
+                .status-good {
                     color: limegreen;
                 }
-                .status-danger{
+
+                .status-mid {
+                    color: gold;
+                }
+
+                .status-danger {
                     color: red;
                 }
+
                 display: block;
                 margin-bottom: 30px;
-                .row{
+
+                .row {
                     align-items: center;
                 }
+
                 .status-title {
                     span {
                         float: right;
                     }
                 }
+
                 .contact-info {
                     background-color: #FFF;
                     padding: 20px;
                     border-radius: 5px;
                     display: block;
                     height: 100%;
-                    .detail-img{
-                        img{
+                    position: relative;
+
+                    .detail-img {
+                        img {
                             width: 100%;
                         }
                     }
-                    .detail-title{
+
+                    .detail-title {
                         font-size: 35px;
                         margin-bottom: 10px;
                     }
-                    .detail-id{
+
+                    .detail-id {
                         font-size: 15px;
                     }
                 }
 
             }
 
-            .detail-info{
-                .row{
+            .detail-info {
+                .row {
                     display: flex;
                     margin-bottom: 30px;
                 }
-                .contact-info{
+
+                .contact-info {
                     background-color: #FFF;
                     padding: 20px;
                     border-radius: 5px;
                     display: block;
                     margin-bottom: 30px;
                     height: 100%;
-                    &.notes{
+
+                    &.notes {
                         max-height: 430px;
                     }
-                    .info-title{
+
+                    .info-title {
                         font-size: 20px;
                         margin-bottom: 30px;
                     }
-                    ul{
+
+                    ul {
                         padding: 0;
-                        li{
+
+                        li {
                             list-style: none;
-                            span{
+
+                            span {
                                 font-weight: bold;
                                 margin-right: 10px;
                                 min-width: 93px;
@@ -257,26 +298,32 @@
                             }
                         }
                     }
-                    .btn-note{
+
+                    .btn-note {
 
                     }
                 }
-                .timeline{
-                    .timeline-item{
+
+                .timeline {
+                    .timeline-item {
                         padding: 10px;
-                        background-color: #f5f4fc;
+                        background-color: #F5F4FC;
                         border-radius: 5px;
                         margin-bottom: 20px;
-                        .row{
+
+                        .row {
                             margin-bottom: 0;
                             align-items: center;
-                            .author{
+
+                            .author {
                                 font-size: 14px;
-                                i{
+
+                                i {
                                     margin: 0 10px;
                                 }
                             }
-                            .date{
+
+                            .date {
                                 font-size: 12px;
                                 font-weight: 500;
                                 float: right;

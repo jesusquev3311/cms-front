@@ -1,8 +1,11 @@
 <template>
   <section id="add-lead" class="cms-sections">
-    <h3 class="main-title">Add New Lead
-      <router-link to="/leads" tag="a" class="cms-add-btn">Leads</router-link>
-    </h3>
+    <div class="col-sm-10 center-auto">
+      <h3 class="main-title">Add New Lead
+        <router-link to="/leads" tag="a" class="cms-add-btn">Leads</router-link>
+      </h3>
+    </div>
+
     <form @submit="addLead" class="cms-form col-sm-10">
       <div class="row">
         <div class="col-sm-6">
@@ -44,18 +47,6 @@
             </select>
           </div>
         </div>
-
-        <div class="col-sm-6">
-          <div class="form-group">
-            <label>Product</label>
-            <select id="lead-product" name="lead-product" v-model="lead.products.name" class="form-control">
-              <option value="">Select Product</option>
-              <option value="Product Fakes12">Product Fake</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
             <label>Status</label>
@@ -65,14 +56,17 @@
             </select>
           </div>
         </div>
+
+      </div>
+
+      <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
             <label>City</label>
             <input type="text" id="lead-city" name="lead-city" v-model="lead.city" class="form-control">
           </div>
         </div>
-      </div>
-      <div class="row">
+
         <div class="col-sm-6">
           <div class="form-group">
             <label>Zip code</label>
@@ -80,7 +74,10 @@
           </div>
         </div>
 
-        <div class="col-sm-6">
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
           <div class="form-group">
             <label>Country</label>
             <input type="text" id="lead-country" name="lead-country" v-model="lead.country" class="form-control">
