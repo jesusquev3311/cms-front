@@ -107,40 +107,28 @@
           email: '',
           image: '',
           broker:{
-            name: 'Prueba',
-            userId:'1234'
+            name: '',
           },
           address: '',
           city: '',
           zipcode: '',
           country: '',
           phone: '',
-          products: {
-            name:'',
-            price:0,
-            quantity:10
-          },
           company: '',
-          status: 'Started'
+          status: ''
         }
       }
     },
     mounted(){},
     methods:{
       async addLead(){
-        event.preventDefault()
+        event.preventDefault();
         leadService.Leads().createOne({
           name: this.lead.name,
           email: this.lead.email,
           phone: this.lead.phone,
-          broker: {
+          broker:{
             name:this.lead.broker.name,
-            userId:this.lead.broker.userId
-          },
-          products: {
-            name:this.lead.products.name,
-            price: this.lead.products.price,
-            qunatity: this.lead.products.qunatity
           },
           company: this.lead.company,
           city: this.lead.city,
@@ -151,12 +139,20 @@
         })
           .then((response)=>{
             console.log('Lead Created', response.data);
-            alert('Lead Created successfully', response.data);
-            this.$router.push({name: 'Leads'})
+            this.$noty.success("Lead Created Successfully", {
+              killer: true,
+              timeout: 2000,
+              layout: 'topRight',
+            });
+            this.$router.push({name: 'Leads'});
           })
           .catch((err)=>{
             console.log(err);
-            alert('There was an Error');
+            this.$noty.error("There Was an Error" + err, {
+              killer: true,
+              timeout: 2000,
+              layout: 'topRight',
+            });
           })
       }
     }
