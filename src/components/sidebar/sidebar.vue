@@ -3,7 +3,7 @@
     <div class="sidebar-header">
       <div class="user-info">
         <div class="img-wrapper">
-          <img src="../../assets/img/profile.jpg" alt="Porfile" height="100px" width="100px">
+          <img src="../../assets/img/logo.png" alt="Porfile" height="50px" width="100%">
         </div>
       </div>
       <div class="sidebar-menu">
@@ -49,7 +49,8 @@
     .sidebar-header {
       .img-wrapper {
         img {
-          border-radius: 100%;
+          border-radius: 0;
+          margin-bottom: 30px;
         }
       }
     }

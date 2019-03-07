@@ -45,8 +45,8 @@
                                 <h4 class="info-title">General Info</h4>
                                 <ul>
                                     <li><span>Company:</span> {{this.lead.company}}</li>
-                                    <li><span>Broker:</span> {{this.lead.broker.name}}</li>
-                                    <li><span>Broker ID:</span> {{this.lead.broker._id}}</li>
+                                    <li v-for="broker in lead.broker"><span>Broker:</span> {{broker.name}}</li>
+                                    <li v-for="broker in lead.broker"><span>Broker ID:</span> {{broker._id}}</li>
                                     <li><span>Lead Status:</span> {{this.lead.status}}</li>
                                 </ul>
                             </div>
@@ -59,14 +59,14 @@
                         <div class="col-sm-4">
                             <div class="contact-info notes">
                                 <h4 class="info-title">Notes</h4>
-                                <form>
+                                <form @submit="createNote">
                                     <div class="form-group">
                                         <label for="note-title">author</label>
-                                        <input type="text" id="note-title" class="form-control">
+                                        <input type="text" id="note-title" class="form-control" v-model="note.author">
                                     </div>
                                     <div class="form-group">
                                         <label for="note-description">Description</label>
-                                        <textarea name="note-description" id="note-description" cols="30" rows="5" class="form-control"></textarea>
+                                        <textarea name="note-description" id="note-description" cols="30" rows="5" class="form-control" v-model="note.description"></textarea>
                                     </div>
 
                                     <button class="btn cms-edit-btn">send</button>
@@ -79,7 +79,27 @@
                             <div class="contact-info timeline">
                                 <h4 class="info-title">Notes Timeline</h4>
                                 <ul class="timeline">
-                                    <li class="timeline-item"></li>
+                                   <template >
+                                        <li v-for="note in notes"  class="timeline-item">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <div class="author">
+                                                        <i class="fas fa-arrow-right"></i>
+                                                        {{note.author}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="description">
+                                                        {{note.description}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <span v-if="note.createdAt" class="date"><i class="far fa-clock"></i> {{formatNoteDate(note.createdAt)}}</span>
+                                                    <span v-else class="date">n/a</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                   </template>
                                 </ul>
                             </div>
                         </div>
@@ -102,17 +122,54 @@
                 lead: {},
                 broker:{},
                 notes: [],
-                note:{}
+                note:{
+                    author: '',
+                    description: '',
+                    date: ''
+                }
             }
         },
         mounted() {
             this.getLead(this.id);
         },
+        watch:{
+            notes(){
+               return this.notes;
+            }
+        },
         methods: {
             getLead(id) {
                 leadService.Leads().getOne(id).then((response) => {
-                    this.lead = response.data.lead
+                    this.lead = response.data.lead;
+                    this.notes = response.data.lead.notes;
                 })
+            },
+            createNote(){
+                event.preventDefault();
+                leadService.Leads().addNote(this.lead._id, {
+                    author: this.note.author,
+                    description: this.note.description
+                })
+                    .then((response)=>{
+                        console.log('created', response);
+                        alert('yeah');
+                    })
+                    .catch(err => console.log('error', err));
+            },
+            getNotes(){
+                leadService.Leads().getNotes(this.lead._id).then((response)=>{
+                    this.notes = response.data;
+                    console.log(response)
+                })
+            },
+            formatNoteDate(date){
+                let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                let newdate = new Date(date);
+                let year = newdate.getFullYear();
+                let month = newdate.getMonth('mmmm');
+                let day = newdate.getDay();
+                this.note.date = `${day}/${month}/${year}`;
+                return  `${months[month]} ${day}`;
             }
         }
     }
@@ -195,6 +252,29 @@
                     }
                     .btn-note{
 
+                    }
+                }
+                .timeline{
+                    .timeline-item{
+                        padding: 10px;
+                        background-color: #f5f4fc;
+                        border-radius: 5px;
+                        margin-bottom: 20px;
+                        .row{
+                            margin-bottom: 0;
+                            align-items: center;
+                            .author{
+                                font-size: 14px;
+                                i{
+                                    margin: 0 10px;
+                                }
+                            }
+                            .date{
+                                font-size: 12px;
+                                font-weight: 500;
+                                float: right;
+                            }
+                        }
                     }
                 }
             }

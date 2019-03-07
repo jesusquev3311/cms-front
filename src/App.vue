@@ -6,7 +6,10 @@
           <sidebar/>
         </div>
         <div class="col-sm-10">
+            <login :authenticated.sync="this.authenticated" v-if="this.authenticated == false"></login>
+          <template v-else>
             <router-view />
+          </template>
         </div>
 
       </div>

@@ -47,7 +47,8 @@
                 .then((response) => {
                     console.log('User Logged successfully', response);
                     if ( response.data.success == true){
-                        this.$router.push({name: 'dashboard'})
+                        this.authenticated = true;
+                        this.$router.push({name: 'leads'});
                     } else {
                         console.log('there was an error');
                         this.$router.push({name: 'Login'})
