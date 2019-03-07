@@ -132,6 +132,9 @@
         mounted() {
             this.getLead(this.id);
         },
+        // updated(){
+        //     this.getLead(this.id);
+        // },
         watch:{
             notes(){
                return this.notes;
@@ -153,6 +156,7 @@
                     .then((response)=>{
                         console.log('created', response);
                         alert('yeah');
+                        this.getLead(this.lead._id)
                     })
                     .catch(err => console.log('error', err));
             },
