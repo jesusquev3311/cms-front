@@ -1,9 +1,9 @@
 import Api from '@/services/Api'
 
 export default {
-    Login (url = 'logout') {
+    Logout (url = 'logout') {
         return {
-            logout: () => Api().post(url)
+            start: () => Api().get(url)
         }
     }
 }

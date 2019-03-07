@@ -17,8 +17,8 @@
           <li class="menu-item">
             <router-link tag="a" to="/login">Log In</router-link>
           </li>
-          <li class="menu-item">
-            <router-link tag="a" to="/logout">Log Out</router-link>
+          <li class="menu-item" @click="userLogout">
+            <a style="cursor: pointer" >Log Out</a>
           </li>
         </ul>
       </div>
@@ -28,10 +28,30 @@
 </template>
 
 <script>
+  import logout from '../../services/logout'
   export default {
     name: "sidebar",
     data() {
       return {}
+    },
+    methods:{
+      userLogout(){
+        logout.Logout().start().then(()=>{
+          this.$noty.success("Logout Successfully", {
+            killer: true,
+            timeout: 2000,
+            layout: 'topRight',
+          });
+          this.$router.push({name: 'Login'})
+        }).catch((err)=>{
+          this.$noty.error("You are not Logged in", {
+            killer: true,
+            timeout: 2000,
+            layout: 'topRight',
+          });
+          console.log(err)
+        })
+      }
     }
   }
 </script>
