@@ -54,5 +54,21 @@
         }
       }
     }
+    ul{
+      padding: 0;
+      li{
+        list-style: none;
+        a{
+          padding: 20px 5px;
+          border-bottom: 1px solid;
+          display: block;
+          color: #000;
+          transition: all .5s;
+          &:hover{
+            color: #007bff;
+          }
+        }
+      }
+    }
   }
 </style>

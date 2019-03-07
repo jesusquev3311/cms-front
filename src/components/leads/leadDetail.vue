@@ -238,6 +238,9 @@
                     display: block;
                     margin-bottom: 30px;
                     height: 100%;
+                    &.notes{
+                        max-height: 430px;
+                    }
                     .info-title{
                         font-size: 20px;
                         margin-bottom: 30px;
