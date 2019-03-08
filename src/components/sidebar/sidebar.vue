@@ -8,9 +8,9 @@
       </div>
       <div class="sidebar-menu">
         <ul>
-          <li class="menu-item">
-            <router-link tag="a" to="/dashboard">Dashboard</router-link>
-          </li>
+          <!--<li class="menu-item">-->
+            <!--<router-link tag="a" to="/dashboard">Dashboard</router-link>-->
+          <!--</li>-->
           <li class="menu-item">
             <router-link tag="a" to="/leads">Clients</router-link>
           </li>
