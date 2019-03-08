@@ -179,20 +179,20 @@
       this.getLeads()
     },
     methods: {
-      async getLeads() {
+       getLeads() {
         LeadsService.Leads().getAll().then((response) => {
           this.leads = response.data.leads
         })
           .catch((err) => console.log(err))
       },
-      async deleteLead(id){
+       deleteLead(id){
         LeadsService.Leads().deleteOne(id)
           .then((response)=>{
             alert('Lead Removed', response)
             this.$router.push({name: 'Leads'});
           })
           .catch((err)=>{
-            alert('Error, please try again')
+            alert('Error, please try again');
             console.log(err)
           })
       }

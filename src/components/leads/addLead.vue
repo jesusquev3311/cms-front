@@ -121,14 +121,14 @@
     },
     mounted(){},
     methods:{
-      async addLead(){
+       addLead(){
         event.preventDefault();
         leadService.Leads().createOne({
           name: this.lead.name,
           email: this.lead.email,
           phone: this.lead.phone,
           broker:{
-            name:this.lead.broker.name,
+            name:'kkdkdkdk',
           },
           company: this.lead.company,
           city: this.lead.city,

@@ -8,9 +8,6 @@ export default {
       createOne: (lead) => Api().post(url, lead),
       updateOne: (id, lead) => Api().put(`${url}/${id}`, lead),
       deleteOne: (id) => Api().delete(`${url}/${id}`),
-      //Leads Notes Method
-      getNotes: (leadId) => Api().get(`${url}/${leadId}/notes`),
-      getNote: (leadId, id) => Api().get(`${url}/${leadId}/notes/${id}`),
       addNote: (leadId, note) => Api().post(`${url}/${leadId}/notes`, note),
       deleteNote: (leadId, id) => Api().delete(`${url}/${leadId}/notes/${id}`)
     }

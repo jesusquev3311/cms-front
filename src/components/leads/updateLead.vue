@@ -1,5 +1,5 @@
 <template>
-    <section id="add-lead" class="cms-sections">
+    <section id="update-lead" class="cms-sections">
         <div class="col-sm-10 center-auto">
             <h3 class="main-title">Update Lead Info
                 <router-link :id="lead._id" tag="a" class="cms-add-btn" :to="'/leads/'+lead._id">Go Back</router-link>
@@ -11,14 +11,14 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" id="lead-name" name="lead-name" v-model="this.lead.name" class="form-control">
+                        <input type="text" id="lead-name"  v-model="this.lead.name" class="form-control">
                     </div>
                 </div>
 
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" id="lead-email" name="lead-email" v-model="lead.email" class="form-control">
+                        <input type="email" id="lead-email"  v-model="lead.email" class="form-control">
                     </div>
                 </div>
             </div>
@@ -110,8 +110,7 @@
                     email: '',
                     image: '',
                     broker: {
-                        name: 'Prueba',
-                        userId: '1234'
+                        name: ''
                     },
                     address: '',
                     city: '',
@@ -119,7 +118,7 @@
                     country: '',
                     phone: '',
                     company: '',
-                    status: 'Started'
+                    status: ''
                 }
             }
         },
