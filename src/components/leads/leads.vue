@@ -208,6 +208,7 @@
       border-radius: 5px;
       margin-bottom: 30px;
       box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+      min-height: 490px;
       .img-wrapper{
         img{
           border-radius: 3px;
@@ -239,7 +240,7 @@
         padding-bottom: 10px;
         margin-bottom: 5px;
         border-bottom: 1px solid #ededed;
-
+        min-height: 222px;
         .lead-subtitle {
           font-size: 16px;
           color: #afafbd;
@@ -252,6 +253,9 @@
           font-size: 14px;
         }
       }
+        .footer{
+          margin-top: 30px;
+        }
     }
   }
 </style>

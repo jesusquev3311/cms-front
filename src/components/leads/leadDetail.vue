@@ -172,12 +172,12 @@
                 })
                     .then((response) => {
                         console.log('created', response);
+                        this.getLead(this.lead._id)
                         this.$noty.success("Note Added Successfully!", {
                             killer: true,
-                            timeout: 5000,
+                            timeout: 3000,
                             layout: 'topRight',
                         });
-                        this.getLead(this.lead._id)
                     })
                     .catch(err => console.log('error', err));
             },
